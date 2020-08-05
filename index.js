@@ -1,11 +1,12 @@
 // UI needed in Command Line
-// Board
-// whose turn
-// prompt to ask user input
+// - Board
+// - whose turn
+// - prompt to ask user input
 
 var prompt = require('prompt');
 
 const board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+let whoseTurn = 'X'; // game start with X's turn
 
 const getBoard = () => {
   console.log(`
@@ -14,11 +15,15 @@ const getBoard = () => {
     ${board[3]} | ${board[4]} | ${board[5]}
     ----------
     ${board[6]} | ${board[7]} | ${board[8]}
+
+    It is ${whoseTurn}'s turn. Plesae choose the locationd index.
     `
   );
 }
 
-const whoseTurn = 'X';
+const toggleTurn = () => {
+  whoseTurn = whoseTurn === 'X' ? 'O' : 'X';
+}
 
 const getUserInput = (whoseTurn) => {
   prompt.start();
@@ -26,7 +31,7 @@ const getUserInput = (whoseTurn) => {
   prompt.get(['locationIndex'], function (err, result) {
     board[result.locationIndex - 1] = whoseTurn;
     getBoard();
-
+    toggleTurn();
   });
 }
 
