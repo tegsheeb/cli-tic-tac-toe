@@ -1,6 +1,4 @@
-
-
-// UI in Command Line
+// UI needed in Command Line
 // Board
 // whose turn
 // prompt to ask user input
